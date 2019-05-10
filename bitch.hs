@@ -113,7 +113,7 @@ exec cfg (o : os) w = do
         | otherwise = (a `shiftL` s' .|. bBits, b `shiftR` s')
       where
         s' = fromIntegral s
-        bBits = sum [bit i | i <- [0..s'], testBit b (s' - 1 - i)]
+        bBits = sum [bit i | i <- [0..s'-1], testBit b (s' - 1 - i)]
 exec _ _ _ = return ()
 
 main :: IO ()
@@ -201,5 +201,5 @@ pWorld World{ accum = a, store = s } =
     w = 6*g
     b = 1 `shiftL` (4 * w)
     hex a = grp $ tail (showHex (b .|. a .&. (b-1)) "")
-    rev s = sum [bit i | i <- [0..4*w], testBit s (4*w - i)]
+    rev s = sum [bit i | i <- [0..4*w-1], testBit s (4*w - 1 - i)]
     grp = unwords . map (take g) . takeWhile (not . null) . iterate (drop g)
