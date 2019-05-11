@@ -17,10 +17,6 @@ with the following differences:
 * (fix) input in chained instruction reads from same line as unchained
   instructions
 
-* (fix?) <code>#</code> requires a literal, unlike bitwise operations which
-  can be followed by other operations (that's my reading of the description
-  at https://esolangs.org/wiki/bitch)
-
 ## compile
 
 <code>ghc --make bitch</code>

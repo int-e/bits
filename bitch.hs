@@ -19,22 +19,19 @@
 --   example: % .. 0000 0000 0000 0001 | 8000 0000 0000 0000 .. ^^[1
 -- - (fix) input in chained instruction reads from same line as unchained
 --   instructions
--- - (fix?) # requires a literal, unlike bitwise operations which can be
---   followed by other operations
 
 import Control.Monad
 import Data.Bits
 import Numeric
 import System.Environment
 import System.Exit
-import System.IO
 import Text.Read (readMaybe)
 
 -- basic operations: flow, I/O, bitwise (unary), extra
 data Op0 = MARK | RESET | STOP | READ | WRITE | LIT Integer | NOT | DUMP
 
--- bitwise operations (binary)
-data Op1 = AND | OR | XOR | SHL | SHR
+-- bitwise operations (binary), clear storage modifier
+data Op1 = AND | OR | XOR | SHL | SHR | CLS
 
 -- conditionals
 data Cmp = EQZ | NEZ
@@ -89,7 +86,7 @@ exec cfg (o : os) w = do
         if charIO cfg then putChar (toEnum (fromIntegral (accum w)))
                       else print (accum w)
         return (w, os)
-    op (Op0 (LIT n)) = return (w{ accum = n, store = 0 }, os)
+    op (Op0 (LIT n)) = return (w{ accum = n }, os)
     op (Op0 DUMP) = do
         putStrLn $ unwords ["%", pWorld w, take 1 os >>= pOp]
         return (w, os)
@@ -106,6 +103,7 @@ exec cfg (o : os) w = do
                w{ accum = a, store = s }
         SHR -> let (s, a) = shlOp (store w, accum w) val in
                w{ accum = a, store = s }
+        CLS -> w{ accum = val, store = 0 }
 
     -- shift lower s bits of b into a
     shlOp (a, b) s
@@ -136,17 +134,13 @@ parseProg xs = case xs of
     '<' : xs -> Op0 RESET : parseProg xs
     '\\' : xs -> Op0 READ : parseProg xs
     '/' : xs -> Op0 WRITE : parseProg xs
-    '#' : xs ->
-        let (n, xs') = span (`elem` numChars) xs in
-        case readMaybe n of
-            Just n -> Op0 (LIT n) : parseProg xs'
-            _ -> []
     '%' : xs -> Op0 DUMP : parseProg xs
     '&' : xs -> op1 AND xs
     '|' : xs -> op1 OR xs
     '^' : xs -> op1 XOR xs
     ']' : xs -> op1 SHR xs
     '[' : xs -> op1 SHL xs
+    '#' : xs -> op1 CLS xs
     ':' : xs -> cond EQZ (parseProg xs)
     ';' : xs -> cond NEZ (parseProg xs)
     _ -> []
@@ -177,7 +171,7 @@ pOp0 MARK = ">"
 pOp0 RESET = "<"
 pOp0 READ = "\\"
 pOp0 WRITE = "/"
-pOp0 (LIT n) = '#' : show n
+pOp0 (LIT n) = show n
 pOp0 DUMP = "%"
 
 pOp1 :: Op1 -> Char
@@ -186,11 +180,11 @@ pOp1 OR = '|'
 pOp1 XOR = '^'
 pOp1 SHL = '['
 pOp1 SHR = ']'
+pOp1 CLS = '#'
 
 pOp :: Op -> String
 pOp (COND cmp op) = pCmp cmp : pOp op
 pOp (Op0 op0) = pOp0 op0
-pOp (Op1 op1 (Op0 (LIT n))) = pOp1 op1 : show n
 pOp (Op1 op1 op) = pOp1 op1 : pOp op
 
 pWorld :: World -> String
