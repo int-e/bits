@@ -36,3 +36,5 @@ with the following differences:
 * [bitch.hs](bitch.hs): interpreter source
 * [hello](hello): a hello world program
 * [rot13](rot13): a rot13 program
+* [add](add): 32 bit addition
+* [sub](sub): 32 bit subtraction
