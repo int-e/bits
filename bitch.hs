@@ -48,11 +48,11 @@ data World = World {
     input :: String
 }
 
-world0 :: String -> World
-world0 input = World {
+world0 :: String -> Program -> World
+world0 input prog = World {
     accum = 0,
     store = 0,
-    reset = [],
+    reset = prog,
     input = input
  }
 
@@ -123,7 +123,7 @@ main = do
         _ -> putStrLn "Usage: $0 [-c] file" >> exitFailure
     prog <- parseProg <$> readFile f
     input <- getContents
-    void $ exec cfg prog (world0 input)
+    void $ exec cfg prog (world0 input prog)
 
 -- parsing
 parseProg :: String -> [Op]
