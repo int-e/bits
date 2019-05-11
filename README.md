@@ -30,6 +30,7 @@ with the following differences:
 ## files
 
 * [bitch.hs](bitch.hs): interpreter source
+* [cat](cat): a cat program
 * [hello](hello): a hello world program
 * [rot13](rot13): a rot13 program
 * [add](add): 32 bit addition
