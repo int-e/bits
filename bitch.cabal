@@ -17,6 +17,7 @@ category:            Language
 build-type:          Simple
 extra-source-files:
     README.md
+    examples/LICENSE
     examples/hello
     examples/cat
     examples/rot13
