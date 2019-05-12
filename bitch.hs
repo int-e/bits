@@ -27,6 +27,9 @@ import System.Environment
 import System.Exit
 import Text.Read (readMaybe)
 
+maxShift :: Integer
+maxShift = 2^24
+
 -- basic operations: flow, I/O, bitwise (unary), extra
 data Op0 = MARK | RESET | STOP | READ | WRITE | LIT Integer | NOT | DUMP
 
@@ -108,6 +111,7 @@ exec cfg (o : os) w = do
     -- shift lower s bits of b into a
     shlOp (a, b) s
         | s < 0 = (a, b)
+        | s > maxShift = error $ "shifting by more than " ++ show maxShift ++ "bits at once, giving up!"
         | otherwise = (a `shiftL` s' .|. bBits, b `shiftR` s')
       where
         s' = fromIntegral s
