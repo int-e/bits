@@ -27,6 +27,7 @@ with the following differences:
 ## files
 
 * [bitch.hs](bitch.hs): interpreter source
-* [examples/cat](examples/cat): a cat program
-* [examples/hello](examples/hello): a hello world program
-* [examples/rot13](examples/rot13): a rot13 program
+* [examples/cat](examples/cat), [examples/rev](examples/rev): cat and reverse
+* [examples/hello](examples/hello): Hello, world!
+* [examples/rot13](examples/rot13): rot13
+* [examples/quine](examples/quite): quine

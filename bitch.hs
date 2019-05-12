@@ -111,7 +111,8 @@ exec cfg (o : os) w = do
     -- shift lower s bits of b into a
     shlOp (a, b) s
         | s < 0 = (a, b)
-        | s > maxShift = error $ "shifting by more than " ++ show maxShift ++ "bits at once, giving up!"
+        | s > maxShift = error $ "shifting by more than " ++
+            show maxShift ++ " bits at once, giving up!"
         | otherwise = (a `shiftL` s' .|. bBits, b `shiftR` s')
       where
         s' = fromIntegral s
