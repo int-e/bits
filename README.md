@@ -14,9 +14,6 @@ with the following differences:
   example:
   <code>% .. 0000 0000 0000 0001 | 8000 0000 0000 0000 .. ^^[1</code>
 
-* (fix) input in chained instruction reads from same line as unchained
-  instructions
-
 ## compile
 
 <code>ghc --make bitch</code>
@@ -30,8 +27,6 @@ with the following differences:
 ## files
 
 * [bitch.hs](bitch.hs): interpreter source
-* [cat](cat): a cat program
-* [hello](hello): a hello world program
-* [rot13](rot13): a rot13 program
-* [add](add): 32 bit addition
-* [sub](sub): 32 bit subtraction
+* [examples/cat](examples/cat): a cat program
+* [examples/hello](examples/hello): a hello world program
+* [examples/rot13](examples/rot13): a rot13 program
