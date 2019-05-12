@@ -16,7 +16,7 @@ with the following differences:
 
 ## compile
 
-<code>ghc --make bitch</code>
+<code>ghc --make bitch</code> or <code>cabal install</code>
 
 ## usage
 

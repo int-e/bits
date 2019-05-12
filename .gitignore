@@ -1,4 +1,8 @@
 *~
 *.o
 *.hi
-bitch
+/bitch
+/dist/
+/.cabal-sandbox/
+/dist-newstyle/
+/cabal.project.local
