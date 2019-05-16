@@ -31,3 +31,4 @@ with the following differences:
 * [examples/hello](examples/hello): Hello, world!
 * [examples/rot13](examples/rot13): rot13
 * [examples/quine](examples/quite): quine
+* [examples/brainfuck](examples/brainfuck): Brainfuck interpreter, generated from [examples/brainfuck.pp](example/brainfuck.pp)

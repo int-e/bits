@@ -23,6 +23,8 @@ extra-source-files:
     examples/rot13
     examples/add
     examples/sub
+    examples/brainfuck.pp
+    examples/brainfuck
 
 source-repository head
     type:               git
