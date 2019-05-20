@@ -66,7 +66,7 @@ prefix  name fun = Prefix  (tok name >> return (Unary fun))
 postfix name fun = Postfix (tok name >> return (Unary fun))
 
 natural :: Parsec String u Integer
-natural = read <$> many1 (oneOf ['0'..'9'])
+natural = read <$> many1 (oneOf ['0'..'9']) <* spaces
 
 name :: Parsec String u String
 name = try $ many1 (satisfy isAlpha') <* spaces
