@@ -11,7 +11,7 @@
 // details.
 //
 // To compile:
-//   g++ -Wall -O2 shifty.cc -o shifty -lgmpxx -lgmp
+//   g++ -std=c++11 -Wall -O2 shifty.cc -o shifty -lgmpxx -lgmp
 
 #include <fstream>
 #include <iostream>
