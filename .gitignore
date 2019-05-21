@@ -2,6 +2,7 @@
 *.o
 *.hi
 /bitch
+/cc/shifty
 /dist/
 /.cabal-sandbox/
 /dist-newstyle/
