@@ -1,12 +1,13 @@
 # bitch programming language
 
-This is a reimplementation of https://github.com/Helen0903/bitch in Haskell,
-with the following differences:
+This repository contains two implementation of
+https://github.com/Helen0903/bitch, one in Haskell, and the other in C++.
+The following distinguishing features are implemented:
 
-* use big integers
+* big integers, offering unbounded memory
 
-* additional operation <code>%</code> dumps the current state and the next
-  instruction
+* the additional operation <code>%</code> dumps the current state and the
+  next instruction
 
   format:
   <code>% .. accumulator (in hex) | reverse storage .. instruction</code>
@@ -14,19 +15,10 @@ with the following differences:
   example:
   <code>% .. 0000 0000 0000 0001 | 8000 0000 0000 0000 .. ^^[1</code>
 
-## compile
-
-<code>ghc --make bitch</code> or <code>cabal install</code>
-
-## usage
-
-<code>./bitch [-c] file</code>
-
-* <code>-c</code> enables character-based I/O
-
 ## files
 
-* [bitch.hs](bitch.hs): interpreter source
+* [hs/bitch.hs](hs/bitch.hs): Haskell interpreter source
+* [cc/shifty.cc](cc/shifty.cc): C++ interpreter source
 * [examples/cat](examples/cat), [examples/rev](examples/rev): cat and reverse
 * [examples/hello](examples/hello): Hello, world!
 * [examples/rot13](examples/rot13): rot13

@@ -3,7 +3,7 @@
 *.hi
 /bitch
 /cc/shifty
-/dist/
-/.cabal-sandbox/
-/dist-newstyle/
-/cabal.project.local
+/hs/dist/
+/hs/.cabal-sandbox/
+/hs/dist-newstyle/
+/hs/cabal.project.local
