@@ -58,8 +58,7 @@ protected:
 
 public:
     op(op &) = delete;
-    ~op();
-    void operator delete(void *);
+    virtual ~op() = default;
 
     typedef std::unique_ptr<const class op> uptr;
 
@@ -78,8 +77,6 @@ protected:
     explicit bop(OP type_, op::uptr &&next_);
 
 public:
-    ~bop() = delete;
-
     uptr next;
 
     friend op::uptr parse_op(std::istream &is);
@@ -95,8 +92,6 @@ protected:
     explicit lit(const mpz_class &val_);
 
 public:
-    ~lit() = delete;
-
     const mpz_class val;
 
     friend op::uptr parse_op(std::istream &is);
@@ -105,40 +100,6 @@ public:
 lit::lit(const mpz_class &val_)
     : op(LIT), val(val_)
 { }
-
-op::~op()
-{
-    // this is the price we pay for shunning a virtual destructor...
-    switch (type) {
-    case MARK: case RESET: case NOT: case DUMP: case STOP:
-    case READ: case WRITE:
-        break;
-    case LIT:
-        static_cast<lit *>(this)->val.~mpz_class();
-        break;
-    case AND: case OR: case XOR: case SHL: case SHR: case CLS:
-    case EQZ: case NEZ:
-        static_cast<bop *>(this)->next.~uptr();
-        break;
-    }
-}
-
-void op::operator delete(void *p)
-{
-    switch (static_cast<op *>(p)->type) {
-    case MARK: case RESET: case NOT: case DUMP: case STOP:
-    case READ: case WRITE:
-        ::operator delete(p, sizeof(op));
-        break;
-    case LIT:
-        ::operator delete(p, sizeof(lit));
-        break;
-    case AND: case OR: case XOR: case SHL: case SHR: case CLS:
-    case EQZ: case NEZ:
-        ::operator delete(p, sizeof(bop));
-        break;
-    }
-}
 
 // Parsing
 
@@ -226,7 +187,7 @@ program parse(std::istream &is)
     program prog;
     try {
         for (;;) {
-            prog.push_back(std::move(op::uptr(parse_op(is))));
+            prog.push_back(op::uptr(parse_op(is)));
         }
     } catch (eof) {
     };
