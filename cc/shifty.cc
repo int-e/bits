@@ -59,6 +59,7 @@ protected:
 public:
     op(op &) = delete;
     ~op();
+    void operator delete(void *);
 
     typedef std::unique_ptr<const class op> uptr;
 
@@ -118,6 +119,23 @@ op::~op()
     case AND: case OR: case XOR: case SHL: case SHR: case CLS:
     case EQZ: case NEZ:
         static_cast<bop *>(this)->next.~uptr();
+        break;
+    }
+}
+
+void op::operator delete(void *p)
+{
+    switch (static_cast<op *>(p)->type) {
+    case MARK: case RESET: case NOT: case DUMP: case STOP:
+    case READ: case WRITE:
+        ::operator delete(p, sizeof(op));
+        break;
+    case LIT:
+        ::operator delete(p, sizeof(lit));
+        break;
+    case AND: case OR: case XOR: case SHL: case SHR: case CLS:
+    case EQZ: case NEZ:
+        ::operator delete(p, sizeof(bop));
         break;
     }
 }
