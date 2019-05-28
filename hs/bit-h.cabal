@@ -1,8 +1,8 @@
 cabal-version:       2.0
 
-name:                bitch
+name:                bit-h
 version:             0.0
-synopsis:            bitch interpreter
+synopsis:            bit** interpreter
 description:
     This is a reimplementation of https://github.com/Helen0903/bitch
     in Haskell, with the following differences:
@@ -29,16 +29,16 @@ extra-source-files:
 
 source-repository head
     type:               git
-    location:           https://github.com/int-e/bitch
+    location:           https://github.com/int-e/bits
 
-executable bitch
-    main-is:            bitch.hs
+executable bit-h
+    main-is:            bit-h.hs
     build-depends:
         base >= 4 && < 5
     default-language:    Haskell2010
 
-executable bitchpp
-    main-is:            bitchpp.hs
+executable bit-pp
+    main-is:            bit-pp.hs
     build-depends:
         parsec >= 3.1 && < 3.2,
         containers >= 0.6 && < 0.7,

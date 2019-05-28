@@ -1,7 +1,10 @@
-# bitch programming language
+# bit** programming language
 
 This repository contains two implementation of
 https://github.com/Helen0903/bitch, one in Haskell, and the other in C++.
+
+(Note that despite the offensive name, the language itself is surprisingly interesting.)
+
 The following distinguishing features are implemented:
 
 * big integers, offering unbounded memory
@@ -17,7 +20,7 @@ The following distinguishing features are implemented:
 
 ## files
 
-* [hs/bitch.hs](hs/bitch.hs): Haskell interpreter source
+* [hs/bit-h.hs](hs/bit-h.hs): Haskell interpreter source
 * [cc/shifty.cc](cc/shifty.cc): C++ interpreter source
 * [examples/cat](examples/cat), [examples/rev](examples/rev): cat and reverse
 * [examples/hello](examples/hello): Hello, world!

@@ -1,4 +1,4 @@
-// shifty is a "bitch" interpreter
+// shifty is a bit** interpreter
 //
 // original:
 //   https://github.com/Helen0903/bitch
@@ -24,7 +24,7 @@
 
 #define MAX_SHIFT (1 << 24)
 
-namespace bitch {
+namespace bitcc {
 
 typedef uint8_t byte;
 
@@ -529,7 +529,7 @@ static void main(std::istream &is, bool char_io)
     s.exec();
 }
 
-} // namespace bitch
+} // namespace bitcc
 
 // Main Function
 
@@ -559,7 +559,7 @@ int main(int argc, char *argv[])
     if (!ifs.good())
         usage();
 
-    bitch::main(ifs, char_io);
+    bitcc::main(ifs, char_io);
 
     return 0;
 }

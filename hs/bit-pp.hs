@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
--- a macro preprocessor for bitch programming
+-- a macro preprocessor for bit** programming
 --
 -- supports arithmetic, conditionals, and for loops
 --

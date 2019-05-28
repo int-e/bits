@@ -1,4 +1,4 @@
--- a "bitch" interpreter
+-- a bit** interpreter
 --
 -- original:
 --   https://github.com/Helen0903/bitch
@@ -7,10 +7,10 @@
 --   https://esolangs.org/wiki/bitch
 --
 -- to compile:
---   ghc --make bitch.hs
+--   ghc --make bit-h.hs
 --
 -- to use:
---   ./bitch program_file
+--   ./bit-h program_file
 --
 -- differences to github implementation:
 -- - use big integers

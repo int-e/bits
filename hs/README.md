@@ -1,4 +1,4 @@
-# bitch programming language
+# bit** programming language
 
 This is a reimplementation of https://github.com/Helen0903/bitch in Haskell,
 with the following differences:
@@ -16,17 +16,17 @@ with the following differences:
 
 ## compile
 
-<code>ghc --make bitch</code> or <code>cabal install</code>
+<code>ghc --make bit-h</code> or <code>cabal install</code>
 
 ## usage
 
-<code>./bitch [-c] file</code>
+<code>./bit-h [-c] file</code>
 
 * <code>-c</code> enables character-based I/O
 
 ## files
 
-* [bitch.hs](bitch.hs): interpreter source
+* [bit-h.hs](bit-h.hs): interpreter source
 * [examples/cat](examples/cat), [examples/rev](examples/rev): cat and reverse
 * [examples/hello](examples/hello): Hello, world!
 * [examples/rot13](examples/rot13): rot13, generated from [examples/rot13.pp](example/rot13.pp)
