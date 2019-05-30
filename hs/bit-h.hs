@@ -17,8 +17,6 @@
 -- - additional operation % dumps the current state and the next instruction
 --   format:  % .. accumulator (in hex) | reverse storage .. instruction
 --   example: % .. 0000 0000 0000 0001 | 8000 0000 0000 0000 .. ^^[1
--- - (fix) input in chained instruction reads from same line as unchained
---   instructions
 
 import Control.Monad
 import Data.Bits
