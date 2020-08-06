@@ -22,6 +22,8 @@ extra-source-files:
     examples/cat
     examples/rot13.pp
     examples/rot13
+    examples/rot13-lut.pp
+    examples/rot13-lut
     examples/add
     examples/sub
     examples/brainfuck.pp

@@ -24,6 +24,7 @@ The following distinguishing features are implemented:
 * [cc/shifty.cc](cc/shifty.cc): C++ interpreter source
 * [examples/cat](examples/cat), [examples/rev](examples/rev): cat and reverse
 * [examples/hello](examples/hello): Hello, world!
-* [examples/rot13](examples/rot13): rot13
-* [examples/quine](examples/quite): quine
-* [examples/brainfuck](examples/brainfuck): Brainfuck interpreter, generated from [examples/brainfuck.pp](example/brainfuck.pp)
+* [examples/rot13](examples/rot13): rot13, generated from [examples/rot13.pp](examples/rot13.pp)
+* [examples/rot13-lut](examples/rot13-lut): another rot13, generated from [examples/rot13.pp](examples/rot13-lut.pp)
+* [examples/quine](examples/quine): quine
+* [examples/brainfuck](examples/brainfuck): Brainfuck interpreter, generated from [examples/brainfuck.pp](examples/brainfuck.pp)
